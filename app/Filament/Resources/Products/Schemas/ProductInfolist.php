@@ -48,6 +48,27 @@ class ProductInfolist
                                 TextEntry::make('stock')
                                     ->label('Product Stock'),
                             ]),
+                        Tab::make('Image & Status')
+                            ->schema([
+                                ImageEntry::make('image')
+                                    ->label('Product Image')
+                                    ->disk('public'),
+                                TextEntry::make('price')
+                                    ->label('Product Price')
+                                    ->icon('heroicon-o-currency-dollar')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                TextEntry::make('stock')
+                                    ->label('Product Stock')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                IconEntry::make('is_active')
+                                    ->label('Is Active')
+                                    ->boolean(),
+                                IconEntry::make('is_featured')
+                                    ->label('Is Featured')
+                                    ->boolean(),
+                            ]),
                     ])->columnSpanFull(),
                 Section::make('Product Info')
                     ->description('')
