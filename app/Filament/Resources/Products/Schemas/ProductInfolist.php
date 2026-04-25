@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Products\Schemas;
 use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\IconEntry;
 use Filament\Schemas\Schema;
 
 class ProductInfolist
@@ -54,6 +55,12 @@ class ProductInfolist
                             ->label('Product Stock')
                             ->weight('bold')
                             ->color('primary'),
+                        IconEntry::make('is_active')
+                            ->label('Is Active')
+                            ->boolean(),
+                        IconEntry::make('is_featured')
+                            ->label('Is Featured')
+                            ->boolean(),
                     ])->columnSpanFull(),
             ]);
     }
