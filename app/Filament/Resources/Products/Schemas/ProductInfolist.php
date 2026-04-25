@@ -20,6 +20,8 @@ class ProductInfolist
                 Tabs::make('Product Tabs')
                     ->tabs([
                         Tab::make('Product Details')
+                            ->badge('Details')
+                            ->icon('heroicon-o-information-circle')
                             ->schema([
                                 TextEntry::make('name')
                                     ->label('Product Name')
@@ -39,6 +41,8 @@ class ProductInfolist
                                     ->color('info'),
                                 ]),
                         Tab::make('Product Price & Stock')
+                            ->icon('heroicon-o-currency-dollar')
+                            ->badge('Price & Stock')
                             ->schema([
                                 TextEntry::make('price')
                                     ->label('Product Price')
@@ -46,9 +50,17 @@ class ProductInfolist
                                     ->color('primary')
                                     ->icon('heroicon-o-currency-dollar'),
                                 TextEntry::make('stock')
+                                    ->badge()
+                                    ->color(fn ($state) => match (true) {
+                                        $state == 0 => 'danger',
+                                        $state <= 10 => 'warning',
+                                        $state > 10 => 'success',
+                                    })
                                     ->label('Product Stock'),
                             ]),
                         Tab::make('Image & Status')
+                            ->badge('Image & Status')
+                            ->icon('heroicon-o-photo')
                             ->schema([
                                 ImageEntry::make('image')
                                     ->label('Product Image')
@@ -61,7 +73,12 @@ class ProductInfolist
                                 TextEntry::make('stock')
                                     ->label('Product Stock')
                                     ->weight('bold')
-                                    ->color('primary'),
+                                    ->badge()
+                                    ->color(fn ($state) => match (true) {
+                                        $state == 0 => 'danger',
+                                        $state <= 10 => 'warning',
+                                        $state > 10 => 'success',
+                                    }),
                                 IconEntry::make('is_active')
                                     ->label('Is Active')
                                     ->boolean(),
