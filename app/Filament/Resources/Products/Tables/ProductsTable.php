@@ -20,7 +20,8 @@ class ProductsTable
                 //
                 TextColumn::make('name'),
                 TextColumn::make('sku'),
-                TextColumn::make('price'),
+                TextColumn::make('price')
+                    ->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('stock'),
                 ImageColumn::make('image')
                 ->disk('public'),

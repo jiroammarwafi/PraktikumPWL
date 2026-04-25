@@ -27,7 +27,12 @@ class ProductInfolist
                         TextEntry::make('sku')
                             ->label('Product SKU')
                             ->badge()
-                            ->color('success'),
+                            ->color(fn ($state) => match (true) {
+                                str_starts_with($state, 'P001') => 'success',
+                                str_starts_with($state, 'P002') => 'info',
+                                str_starts_with($state, 'P003') => 'warning',
+                                default => 'gray',
+                            }),
                         TextEntry::make('description')
                             ->label('Product Description'),
                         TextEntry::make('created_at')
@@ -40,9 +45,13 @@ class ProductInfolist
                     ->schema([
                         TextEntry::make('price')
                             ->label('Product Price')
+                            ->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.'))
                             ->icon('heroicon-o-currency-dollar'),
                         TextEntry::make('stock')
-                            ->label('Product Stock'),
+                            ->icon(fn ($state) => $state > 0 
+                                ? 'heroicon-o-check-circle' 
+                                : 'heroicon-o-x-circle')
+                            ->color(fn ($state) => $state > 0 ? 'success' : 'danger'),
                     ]),
 
                 Section::make('Image & Status')
