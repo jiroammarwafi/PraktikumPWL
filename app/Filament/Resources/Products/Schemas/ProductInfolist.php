@@ -30,6 +30,14 @@ class ProductInfolist
                             ->label('Product Description'),
                     ])
                     ->columnSpanFull(),
+                Section::make('Pricing & Stock')
+                    ->schema([
+                        TextEntry::make('price')
+                            ->label('Product Price')
+                            ->icon('heroicon-o-currency-dollar'),
+                        TextEntry::make('stock')
+                            ->label('Product Stock'),
+                    ]),
             ]);
     }
 }
