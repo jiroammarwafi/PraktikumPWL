@@ -69,7 +69,7 @@ class ProductInfolist
                                     ->label('Is Featured')
                                     ->boolean(),
                             ]),
-                    ])->columnSpanFull(),
+                    ])->columnSpanFull()->vertical(),
                 Section::make('Product Info')
                     ->description('')
                     ->schema([
