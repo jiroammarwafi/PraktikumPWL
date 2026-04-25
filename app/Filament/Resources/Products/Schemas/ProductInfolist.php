@@ -38,6 +38,16 @@ class ProductInfolist
                                     ->date('d M Y')
                                     ->color('info'),
                                 ]),
+                        Tab::make('Product Price & Stock')
+                            ->schema([
+                                TextEntry::make('price')
+                                    ->label('Product Price')
+                                    ->weight('bold')
+                                    ->color('primary')
+                                    ->icon('heroicon-o-currency-dollar'),
+                                TextEntry::make('stock')
+                                    ->label('Product Stock'),
+                            ]),
                     ])->columnSpanFull(),
                 Section::make('Product Info')
                     ->description('')
