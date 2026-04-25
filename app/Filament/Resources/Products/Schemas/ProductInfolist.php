@@ -30,6 +30,10 @@ class ProductInfolist
                             ->color('success'),
                         TextEntry::make('description')
                             ->label('Product Description'),
+                        TextEntry::make('created_at')
+                            ->label('Product Creation Date')
+                            ->date('d M Y')
+                            ->color('info'),
                     ])
                     ->columnSpanFull(),
                 Section::make('Pricing & Stock')
