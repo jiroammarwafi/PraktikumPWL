@@ -20,13 +20,15 @@ class PostsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')->sortable()->searchable(),
-                TextColumn::make('slug')->sortable()->searchable(),
-                TextColumn::make('category.name')->label('Category')->sortable()->searchable(),
-                ColorColumn::make('color'),
-                ImageColumn::make('image')->disk('public'),
-                TextColumn::make('created_at')->label('Created At')->dateTime()->sortable(),
-                IconColumn::make('published')->boolean(),
+                TextColumn::make('id')->label('ID')->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('title')->sortable()->searchable()->toggleable(),
+                TextColumn::make('slug')->sortable()->searchable()->toggleable(),
+                TextColumn::make('category.name')->label('Category')->sortable()->searchable()->toggleable(),
+                ColorColumn::make('color')->toggleable(isToggledHiddenByDefault: true),
+                ImageColumn::make('image')->disk('public')->toggleable(),
+                TextColumn::make('created_at')->label('Created At')->dateTime()->sortable()->toggleable(),
+                TextColumn::make('tags')->label('Tags')->toggleable(isToggledHiddenByDefault: true),
+                IconColumn::make('published')->boolean()->toggleable(),
             ])->defaultSort('created_at', 'desc')
             ->filters([
                 //
